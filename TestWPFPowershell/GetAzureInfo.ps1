@@ -33,7 +33,6 @@ $reader= New-Object System.Xml.XmlNodeReader $xaml
 Try
 {
 	$Form = [Windows.Markup.XamlReader]::Load($reader)
-
 }
 Catch
 {
