@@ -2,24 +2,26 @@
 Add-Type -AssemblyName System.Windows.Forms
 
 $InputXAML = @'
-<Window
+<Window x:Class="TestWPFPowershell.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestWPFPowershell"
-        Title="MainWindow" Height="410.909" Width="576.818">
-    <Grid>
-        <Button Name="btnGetSubscriptionResourceGroups" Content="Get Azure Resource Groups" HorizontalAlignment="Left" Margin="14,20,0,0" VerticalAlignment="Top" Width="256" Height="43"/>
-        <ListView Name="lstItems" HorizontalAlignment="Left" Height="327" Margin="315,20,0,0" VerticalAlignment="Top" Width="234">
+        mc:Ignorable="d"
+        Title="MainWindow" Height="393.309" Width="705.618">
+    <Grid Margin="0,0,0.2,0">
+        <Button x:Name="btnGetSubscriptionResourceGroups" Content="Get Azure Resource Groups" HorizontalAlignment="Left" Margin="14,20,0,0" VerticalAlignment="Top" Width="256" Height="43"/>
+        <ListView x:Name="lstItems" Margin="385,20,80,17">
             <ListView.View>
-				<GridView>
-                    <GridViewColumn Header="ResourceGroup Name" DisplayMemberBinding="{Binding ResourceGroupName}"/>
+                <GridView>
+                    <GridViewColumn Header="ResourceGroupName" DisplayMemberBinding="{Binding ResourceGroupName}"/>
                     <GridViewColumn Header="ResourceGroup ID" DisplayMemberBinding="{Binding ResourceGroupID}"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <Label Name="lblAzureSubscriptionID" Content="" HorizontalAlignment="Left" Margin="14,309,0,0" VerticalAlignment="Top" Height="38" Width="284"/>
+        <Label x:Name="lblAzureSubscriptionID" Content="" Margin="14,309,401,17"/>
+        <Label x:Name="lblAzureSubscriptionIDTitle" Content="Label" Margin="14,249,401,59" FontSize="30" FontWeight="Bold"/>
     </Grid>
 </Window>
 '@
@@ -49,6 +51,7 @@ $XAML.SelectNodes("//*[@Name]") | % {
 $AzureSubscriptionInfo = Login-AzureRmAccount
 
 #fill label with subscription ID
+$lblAzureSubscriptionIDTitle.Content = "Azure Subscription ID"
 $lblAzureSubscriptionID.Content = $AzureSubscriptionInfo.Context.Subscription.SubscriptionId
 
 

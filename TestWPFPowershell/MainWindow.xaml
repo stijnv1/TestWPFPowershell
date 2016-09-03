@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestWPFPowershell"
         mc:Ignorable="d"
-        Title="MainWindow" Height="410.909" Width="576.818">
-    <Grid>
+        Title="MainWindow" Height="393.309" Width="705.618">
+    <Grid Margin="0,0,0.2,0">
         <Button x:Name="btnGetSubscriptionResourceGroups" Content="Get Azure Resource Groups" HorizontalAlignment="Left" Margin="14,20,0,0" VerticalAlignment="Top" Width="256" Height="43"/>
-        <ListView x:Name="lstItems" HorizontalAlignment="Left" Height="327" Margin="315,20,0,0" VerticalAlignment="Top" Width="234">
+        <ListView x:Name="lstItems" Margin="385,20,80,17">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ResourceGroupName" DisplayMemberBinding="{Binding ResourceGroupName}"/>
@@ -16,7 +16,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Label x:Name="lblAzureSubscriptionID" Content="" HorizontalAlignment="Left" Margin="14,309,0,0" VerticalAlignment="Top" Height="38" Width="284"/>
-
+        <Label x:Name="lblAzureSubscriptionID" Content="" Margin="14,309,401,17"/>
+        <Label x:Name="lblAzureSubscriptionIDTitle" Content="Label" Margin="14,249,401,59" FontSize="36" FontWeight="Bold"/>
     </Grid>
 </Window>
