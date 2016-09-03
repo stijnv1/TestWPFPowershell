@@ -5,8 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestWPFPowershell"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="410.909" Width="576.818">
     <Grid>
-        
+        <Button x:Name="btnGetSubscriptionResourceGroups" Content="Get Azure Resource Groups" HorizontalAlignment="Left" Margin="14,20,0,0" VerticalAlignment="Top" Width="256" Height="43"/>
+        <ListView x:Name="lstItems" HorizontalAlignment="Left" Height="327" Margin="315,20,0,0" VerticalAlignment="Top" Width="234">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ResourceGroupName" DisplayMemberBinding="{Binding ResourceGroupName}"/>
+                    <GridViewColumn Header="ResourceGroup ID" DisplayMemberBinding="{Binding ResourceGroupID}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label x:Name="lblAzureSubscriptionID" Content="" HorizontalAlignment="Left" Margin="14,309,0,0" VerticalAlignment="Top" Height="38" Width="284"/>
+
     </Grid>
 </Window>
